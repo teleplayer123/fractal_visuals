@@ -116,7 +116,8 @@ async fn run() {
             // Zoom doubles every 2.0 seconds. 
             // We reset after 2^18 zoom to avoid floating point 'jitter'.
             let zoom_cycle = (elapsed * 0.5) % 18.0; 
-            uniforms.zoom = f32::powf(2.0, zoom_cycle);
+            let max_zoom = 1024.0; // Set a reasonable maximum zoom level
+            uniforms.zoom = f32::min(f32::powf(2.0, zoom_cycle), max_zoom);
 
             queue.write_buffer(&uniform_buffer, 0, bytemuck::bytes_of(&uniforms));
 

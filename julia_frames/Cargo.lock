@@ -196,7 +196,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "julia_set"
+name = "julia_frames"
 version = "0.1.0"
 dependencies = [
  "fastblur",
